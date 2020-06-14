@@ -1,0 +1,7 @@
+1
+Objects/bunny.obj bunny 1 2
+Objects/bunny.obj bunny 1 6
+Objects/bunny.obj bunny 0.5 11
+Objects/car.obj car 0.5 10
+Objects/car.obj car 1 12
+

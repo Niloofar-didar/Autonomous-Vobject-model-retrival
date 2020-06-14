@@ -1,0 +1,3 @@
+Objects/BigAndy.obj Andy
+Objects/table.obj table
+Objects/appri.obj app

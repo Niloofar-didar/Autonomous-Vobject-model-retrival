@@ -1,0 +1,3 @@
+Objects/finalObj/BigAndydeg2.0.bmp
+Objects/finalObj/tabledeg5.0.bmp
+Objects/finalObj/apprideg5.0.bmp

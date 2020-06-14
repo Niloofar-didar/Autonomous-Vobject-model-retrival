@@ -1,0 +1,3 @@
+5 Objects/obj/appricot.obj 
+5 Objects/obj/table.obj 
+2 Objects/obj/BigAndy.obj 

@@ -1,0 +1,79 @@
+# Blender MTL File: 'Wheelbarrow with Sand.blend'
+# Material Count: 7
+
+newmtl Cylinder_2
+Ns 440.999985
+Ka 0.200000 0.200000 0.200000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Elvair\\Desktop\\MODELOS PARA A VENDA\\Carrinho de mao com areia\\ATLAS\\Wheelbarrow.png
+
+newmtl Plastic
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Elvair\\Desktop\\MODELOS PARA A VENDA\\Carrinho de mao com areia\\ATLAS\\Wheelbarrow.png
+
+newmtl Sand
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Elvair\\Desktop\\MODELOS PARA A VENDA\\Carrinho de mao com areia\\ATLAS\\Wheelbarrow.png
+
+newmtl Shovel
+Ns 2.250001
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.400000 0.400000 0.400000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Elvair\\Desktop\\MODELOS PARA A VENDA\\Carrinho de mao com areia\\ATLAS\\Wheelbarrow.png
+
+newmtl Tray
+Ns 2.250001
+Ka 0.100000 0.100000 0.100000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Elvair\\Desktop\\MODELOS PARA A VENDA\\Carrinho de mao com areia\\ATLAS\\Wheelbarrow.png
+
+newmtl Tray_Under
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.200000 0.200000 0.200000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Elvair\\Desktop\\MODELOS PARA A VENDA\\Carrinho de mao com areia\\ATLAS\\Wheelbarrow.png
+
+newmtl Wheel
+Ns 17.639996
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.300000 0.300000 0.300000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Elvair\\Desktop\\MODELOS PARA A VENDA\\Carrinho de mao com areia\\ATLAS\\Wheelbarrow.png

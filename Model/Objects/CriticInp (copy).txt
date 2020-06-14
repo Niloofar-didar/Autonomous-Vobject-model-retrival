@@ -1,0 +1,4 @@
+3
+Objects/obj/BigAndy.obj BigAndy 0.5
+Objects/obj/table.obj table 0.5
+Objects/obj/appri.obj appri 0.5

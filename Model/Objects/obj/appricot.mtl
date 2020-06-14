@@ -1,0 +1,15 @@
+# Blender MTL File: 'None'
+# Material Count: 1
+
+newmtl Apricot_02_material
+Ns 70.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.627500 0.627500 0.627500
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.600000
+d 1.000000
+illum 1
+map_Bump C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Class\\Searches\\Dbase\\Simple\\appric\\Apricot_02_normal.png
+map_Kd C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Class\\Searches\\Dbase\\Simple\\appric\\Apricot_02_diffuse.png
+map_Ks C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Class\\Searches\\Dbase\\Simple\\appric\\Apricot_02_specular.png

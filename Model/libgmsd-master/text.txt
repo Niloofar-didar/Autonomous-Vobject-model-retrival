@@ -1,0 +1,12 @@
+Objects/Screenshots/bunny1d11r1.0.bmp Objects/Screenshots/bunny1d11r0.5.bmp
+Objects/Screenshots/bunny2d11r1.0.bmp Objects/Screenshots/bunny2d11r0.5.bmp
+Objects/Screenshots/bunny3d11r1.0.bmp Objects/Screenshots/bunny3d11r0.5.bmp
+Objects/Screenshots/bunny4d11r1.0.bmp Objects/Screenshots/bunny4d11r0.5.bmp
+Objects/Screenshots/bunny5d11r1.0.bmp Objects/Screenshots/bunny5d11r0.5.bmp
+Objects/Screenshots/bunny6d11r1.0.bmp Objects/Screenshots/bunny6d11r0.5.bmp
+Objects/Screenshots/car5d11r0.5.bmp Objects/Screenshots/car5d11r1.0.bmp
+Objects/Screenshots/car6d11r0.5.bmp Objects/Screenshots/car6d11r1.0.bmp
+Objects/Screenshots/car1d11r0.5.bmp Objects/Screenshots/car1d11r1.0.bmp
+Objects/Screenshots/car2d11r0.5.bmp Objects/Screenshots/car2d11r1.0.bmp
+Objects/Screenshots/car3d11r0.5.bmp Objects/Screenshots/car3d11r1.0.bmp
+Objects/Screenshots/car4d11r0.5.bmp Objects/Screenshots/car4d11r1.0.bmp
