@@ -15,7 +15,7 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 import pandas as pd
 import numpy as np
-
+import random
 import matplotlib.pyplot as plt
 import csv
 import statistics
@@ -27,16 +27,19 @@ from matplotlib import pyplot as plt
 import os.path
 from os import path
 
-
-
+plt.rcParams.update({'font.size': 12})
+markers = ['>', '+',  'o', 'v', 'x', 'X', '|','^','<','s','p','*','h','H']
 exist=False
+colors=[      'b', 'g',  'r', 'm', 'y', 'orange','violet','navy','blueviolet','teal','lightcoral' ,'olive','deepskyblue', 'grey',  'firebrick','deeppink','lawngreen','slategrey']
 
 address='C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Class\\Searches\\Meetings Data\\Nov\\Nov3 and 4\\degmodel_file.csv'
 if(path.exists(address)):
     
   exist=True
 
-
+stored_distance=[[]]
+stored_deg2=[[]]
+stored_ind=[]
 #read in the file
 #dataset = pd.read_csv("C:\\Users\\loaner\\Desktop\\newValues.csv")
 dataset = pd.read_csv("C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Class\\Searches\\Meetings Data\\Nov\\Nov3 and 4\\one_deg.csv")
@@ -62,27 +65,41 @@ j=1
 distance1 = (dataset['distance'].values.reshape(-1,1))
 name1=dataset['name'].values.reshape(-1,1)
 list11=(dataset['0.2'].values.reshape(-1,1))
+list44=(dataset['0.4'].values.reshape(-1,1))
+list66=(dataset['0.6'].values.reshape(-1,1))
+list88=(dataset['0.8'].values.reshape(-1,1))
 
 objname=[]
 dist=[]
 list22=[]
-
+list444=[]
+list666=[]
+list888=[]
 for i in range(0, len(name1)):
     objname.append(str(name1[i][0]))
     list22.append(float(list11[i]))
+    list444.append(float(list44[i]))
+    list666.append(float(list66[i]))
+    list888.append(float(list88[i]))
     dist.append((distance1[i]))
 
+'''dist, list11, list22, objname, name1m distance1 .. all aare using index that is defined in the next two lines later'''
 
 
-
-print(objname[0] )
+#print(objname[0] )
 print( str(name1[0][0]))
 print( float(distance1[0]))
 count= distance1[len(distance1)-1] #num of objects
 distance1=distance1[:len(distance1) -1]
 
 mindis =[]
+
+labels=[]
+
 with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Class\\Searches\\Meetings Data\\Nov\\Nov3 and 4\\degmodel_file.csv', mode='+a',newline='') as degmodel_file:
+ file_writer = csv.writer(degmodel_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+ if(exist==False):
+      file_writer.writerow(['alpha','betta','c','gamma','max_deg','tris','name','mindis', 'filesize'])
  
  counter2=0
  for ep in range(0, int(count)):
@@ -91,8 +108,7 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   #if (objname[27] == "Cabin"):
   repetative=False
 
-  
-  #index= (temp_objname[::-1].index(name)) # last index of first objectobjname[::-1].index("Cabin")
+  print(name) 
   index=objname.index(name)
   while(index<len(objname) and objname[index]==name):
       index+=1
@@ -108,10 +124,21 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   newHeaders = []             #list to hold only the ratio values
 
 
-
   distance = dist[counter2:index]
-
   
+  Nilname=[]
+  first_indexin_newdata=0
+  tmpname=dataset['name'].values.reshape(-1,1)
+  for i in range(0, len(name1)):
+    if(name== str(tmpname[i][0])):
+        first_indexin_newdata=i
+        break
+    
+    
+  size=len(dataset.index)
+  dataset= dataset.iloc[first_indexin_newdata:size,0:6]
+  dataset=dataset.reset_index(drop=True) 
+  #df_r = df.reset_index(drop=True)
   mindis.append(distance[0])
 #gammaList = dataset['gamma'].values.reshape(-1,1)
 
@@ -125,15 +152,25 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   #objname=dataset['name'+str(ep)].values.reshape(-1,1)
   list2=[]
   list1=[]
+  list4=[]
+  list6=[]
+  list8=[]
 #Nill change
   list1=  list11[counter2:index]
   list2= list22[counter2:index]
+  list4= list444[counter2:index]
+  list6= list666[counter2:index]
+  list8= list888[counter2:index]
   #dataset['0.2-'+str(ep)].values.reshape(-1,1)
   
   
   #row_count = sum(1 for row in reader)
   
+  norm_list6=[]
   
+  for i in range (0, len(list6)):
+      norm_list6.append(list6[i]/list2[0] )
+      
   
   
   row_count = len(distance)
@@ -146,8 +183,36 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   gamma_values.append(gamma_1)
   gamma_values.append(gamma_2)
   gamma_values.append(gamma)
-
+  ratio_list = []
+  r=0
+  for i in range( 0,4):
+    ratio_list.append(round(r+0.20,2))
+    r+=0.20
+  '''
+  if (name =="plane" or name =="Cabin"):
   
+   stored_distance.append(distance)
+   stored_deg2.append(list2)
+   #stored_ind.append(name)
+   '''   
+   
+  value = random.randint(0, len(markers)-1)
+  while(stored_ind.count(value)): #avoid duplicated elm
+      value = random.randint(0, len(markers)-1)
+  
+  #if ( name!= "CocacolaFinal"  ):
+  if ( name!= "CocacolaFinal"  ): 
+      
+   if(name=="Cabin"):
+     name="cabin"
+   if(name!="table" ):
+     plt.plot(distance,norm_list6, marker= markers[value], color=colors[value]) # plotting t, a separately 
+     labels.append(name)
+     stored_ind.append(value)
+  #stored_ind.append(name)
+
+
+
   file3=open("SUM_Errors.txt","r")
   data=[]
   data=file3.readlines()
@@ -171,16 +236,13 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
 
 #("rowcount is "+str(row_count))
 
-  ratio_list = []
+
   distance_list = []
   Y = []
 
 
 
-  r=0
-  for i in range( 0,4):
-    ratio_list.append(round(r+0.20,2))
-    r+=0.20
+
 
 
 
@@ -327,10 +389,9 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
       for i in range(0, row_count-4, interval):
     
         if ( distance[i] <=max_distance) : 
-         #print ( str(distance[i]))
-      #  print (str(ratio))
+
          denom = distance[i]**current_gamma
-       # print ( str(denom))
+
         #Nil - correction in formula
          result = (((a*(ratio**2))+(b*ratio)+(c)) / (denom))
          model_values.append(result)
@@ -347,8 +408,7 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
     
         
       #list2=  dataset[str(ratio)].values.reshape(-1,1)
-      #print ( str(list2))
-    
+
       y_true = np.array(list2)
     
     #mse= mean_squared_error(list8, list6)
@@ -359,9 +419,9 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
       if(repetative==False):
         file2.write('RMSE (no intercept): {}'.format(rmse)+"\n")
         file2.write("percentage error for ratio "+ str(ratio)+ " is " + str(np.mean(np.abs((y_true - y_pred) / y_true)) * 100)+"\n")
-      #print('RMSE (no intercept): {}'.format(rmse))
+      print('RMSE (no intercept): {}'.format(rmse))
     
-      #print("percentage error for ratio "+ str(ratio)+ " is " + str(np.mean(np.abs((y_true - y_pred) / y_true)) * 100))
+      print("percentage error for ratio "+ str(ratio)+ " is " + str(np.mean(np.abs((y_true - y_pred) / y_true)) * 100))
       lowest_perc_err.append(np.mean(np.abs((y_true - y_pred) / y_true) * 100))
     
         
@@ -387,29 +447,15 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
     #print ( str(y_pred))
     
     
-    plt.rc('font', size=5) 
-    plt.xticks(distance)
-    plt.plot(new_distance, model_values) # both should have same dimension
+    #plt.rc('font', size=5) 
+    #plt.xticks(distance)
+    #plt.plot(new_distance, model_values) # both should have same dimension
     print()
     counter = counter + 1
     newCounter = newCounter + 1
 
 
-  indx = 0
-  temp = determineGamma[0]
-  for i in (0,len(determineGamma)-1):
-    if temp > determineGamma[i]:
-        temp = determineGamma[i]
-        indx = i
-
-  indx = indx % 3
-  #print("Lowest AvG RMSE out of all the Gamma values: ", temp, " for Gamma value:", gamma_values[indx])
-  
-  if(repetative==False):
-    file1.write(str(objname[index-1])+"\n")
-    file2.write("Lowest AvG RMSE out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+str( gamma_values[indx])+"\n")
-    file1.write("Lowest AvG RMSE out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+str( gamma_values[indx])+"\n")
-  
+ 
 
   indx = 0
   temp = List_meanof_percerror[0]
@@ -423,6 +469,26 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   if(repetative==False):
     file2.write("Lowest AvG Percentage_err out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+ str(gamma_values[indx])+"\n")
     file1.write("Lowest AvG Percentage_err out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+ str(gamma_values[indx])+"\n")
+    
+    
+  indx = 0
+  temp = determineGamma[0]
+  for i in (0,len(determineGamma)-1):
+    if temp > determineGamma[i]:
+        temp = determineGamma[i]
+        indx = i
+
+  indx = indx % 3
+  print("Lowest AvG RMSE out of all the Gamma values: ", temp, " for Gamma value:", gamma_values[indx])
+  
+  if(repetative==False):
+    file1.write(str(objname[index-1])+"\n")
+    file2.write("Lowest AvG RMSE out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+str( gamma_values[indx])+"\n")
+    file1.write("Lowest AvG RMSE out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+str( gamma_values[indx])+"\n")
+  
+    
+    
+    
     file1.write("\n")
     file2.write("\n")
   z1 = []
@@ -488,11 +554,8 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   obj_indx= o_name2.index(name1[index-1]) # search deg model obj name in lis of objects to find the index for tris
   
   if(repetative==False):
-    file_writer = csv.writer(degmodel_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     
-    if(exist==False):
-      file_writer.writerow(['alpha','betta','c','gamma','max_deg','tris','name','mindis', 'filesize'])
- 
+    
     file_writer.writerow([coeffs[0], coeffs[1], coeffs[2],gamma_values[indx],float(list1[0]), float(tris[obj_indx]),str(objname[index-1]), float(mindis[ep]), float(o_size[obj_indx]) ])
   
   counter2=index
@@ -500,3 +563,26 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
 file2.close()
 file1.close()
 file3.close()
+'''
+sign=["s",">"]
+color=["b", "r"]
+for i in range (1,3):
+   plt.plot(stored_distance[i],stored_deg2[i], sign[i-1], color=color[i-1]) # plotting t, a separately 
+
+'''    
+
+ax = plt.gca()      
+#ax.set_yscale('log')
+ax.set_xscale('log')  
+#plt.legend([stored_ind[0], stored_ind[1]])
+
+#plt.title("Degradation error for 60% decimated object")  
+plt.xlabel('Distance',labelpad=-5)  
+plt.ylabel('Degradation_Error')
+leg = ax.legend();
+plt.legend( labels, loc="upper center", bbox_to_anchor=(0.89,1 ), fontsize=8)
+plt.tight_layout()
+plt.savefig("deg_er.pdf", dpi=500)
+
+plt.show()
+#plt.clf()
