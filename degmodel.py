@@ -95,7 +95,7 @@ distance1=distance1[:len(distance1) -1]
 mindis =[]
 
 labels=[]
-
+fig = plt.figure(figsize=(6.5,4.5))
 with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Class\\Searches\\Meetings Data\\Nov\\Nov3 and 4\\degmodel_file.csv', mode='+a',newline='') as degmodel_file:
  file_writer = csv.writer(degmodel_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
  if(exist==False):
@@ -201,7 +201,7 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
       value = random.randint(0, len(markers)-1)
   
   #if ( name!= "CocacolaFinal"  ):
-  if ( name!= "CocacolaFinal"  ): 
+  if ( name!= "CocacolaFinal" and name != 'BigCabin' and name!= 'drawer' ): 
       
    if(name=="Cabin"):
      name="cabin"
@@ -212,7 +212,8 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   #stored_ind.append(name)
 
 
-
+  if(name=="cabin"):
+     name="Cabin"
   file3=open("SUM_Errors.txt","r")
   data=[]
   data=file3.readlines()
@@ -467,6 +468,7 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   indx = indx % 3
   print("Lowest AvG Percentage_err out of all the Gamma values: ", temp, " for Gamma value:", gamma_values[indx])
   if(repetative==False):
+    file1.write(str(objname[index-1])+"\n")
     file2.write("Lowest AvG Percentage_err out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+ str(gamma_values[indx])+"\n")
     file1.write("Lowest AvG Percentage_err out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+ str(gamma_values[indx])+"\n")
     
@@ -482,7 +484,7 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   print("Lowest AvG RMSE out of all the Gamma values: ", temp, " for Gamma value:", gamma_values[indx])
   
   if(repetative==False):
-    file1.write(str(objname[index-1])+"\n")
+
     file2.write("Lowest AvG RMSE out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+str( gamma_values[indx])+"\n")
     file1.write("Lowest AvG RMSE out of all the Gamma values: "+ str(temp)+ " for Gamma value:"+str( gamma_values[indx])+"\n")
   
@@ -563,13 +565,8 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
 file2.close()
 file1.close()
 file3.close()
-'''
-sign=["s",">"]
-color=["b", "r"]
-for i in range (1,3):
-   plt.plot(stored_distance[i],stored_deg2[i], sign[i-1], color=color[i-1]) # plotting t, a separately 
 
-'''    
+
 
 ax = plt.gca()      
 #ax.set_yscale('log')
@@ -577,12 +574,12 @@ ax.set_xscale('log')
 #plt.legend([stored_ind[0], stored_ind[1]])
 
 #plt.title("Degradation error for 60% decimated object")  
-plt.xlabel('Distance',labelpad=-5)  
-plt.ylabel('Degradation_Error')
+plt.xlabel('Distance',labelpad=-1,fontsize=11)  
+plt.ylabel('Degradation_Error', fontsize=11)
 leg = ax.legend();
-plt.legend( labels, loc="upper center", bbox_to_anchor=(0.89,1 ), fontsize=8)
+plt.legend( labels, loc="upper center", bbox_to_anchor=(0.89,1 ), fontsize=9)
 plt.tight_layout()
-plt.savefig("deg_er.pdf", dpi=500)
+plt.savefig("deg_er.pdf", dpi=300, bbox_inches = 'tight')
 
 plt.show()
 #plt.clf()

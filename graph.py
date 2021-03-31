@@ -60,22 +60,28 @@ START sECTION FOR DATA BASE GRAPH
 markers = ['>', '+', '.', 'o', 'v', 'x', 'X', '|','^','<','s','p','*','h','H','1']
 
 
-plt.figure()
-# Hold activation for multiple lines on same graph
-#plt.hold('on')
-# Set x-axis range
-plt.xlim((1,9))
-# Set y-axis range
-plt.ylim((1,9))
-# Draw lines to split quadrants
-plt.plot([5,5],[1,9], linewidth=3, color='blue' )
-plt.plot([1,9],[5,5], linewidth=3, color='blue' )
-plt.title('Quadrant plot')
-# Draw some sub-regions in upper left quadrant
-#plt.plot([3,3],[5,9], linewidth=2, color='blue')
-#plt.plot([1,5],[7,7], linewidth=2, color='blue')
-plt.show()
+plt.rcParams.update({'font.size': 8})
 
+# =============================================================================
+# plt.figure(frameon=False)
+# # Hold activation for multiple lines on same graph
+# #plt.hold('on')
+# # Set x-axis range
+# plt.xlim((1,9))
+# # Set y-axis range
+# =============================================================================
+# =============================================================================
+# plt.ylim((1,9))
+# # Draw lines to split quadrants
+# plt.plot([5,5],[1,9], linewidth=3, color='blue' )
+# plt.plot([1,9],[5,5], linewidth=3, color='blue' )
+# plt.title('Quadrant plot')
+# # Draw some sub-regions in upper left quadrant
+# #plt.plot([3,3],[5,9], linewidth=2, color='blue')
+# #plt.plot([1,5],[7,7], linewidth=2, color='blue')
+# plt.show()
+# 
+# =============================================================================
 
 #############
 '''
@@ -115,14 +121,11 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
  log_vol=math.log(max_vol,2)
  log_tris=math.log(max_tris,2)
  
+ fig = plt.figure(figsize=(3.7,2.4))
+ mean_tris= 42406
+
  for i in range (0, len (volume)) : # to the number of objects
-  #if(texture[i]=="No"):
-      
-   #plt.scatter(volume[i], tris[i], c='r',marker='x')
-   #plt.scatter(area[i], tris[i], c='b',marker='o') 
-  #else:
-   #plt.scatter(volume[i], tris[i], c='b',marker='o')
-   #plt.scatter(area[i], tris[i], c='b',marker='o') 
+
    
   '''
    
@@ -138,51 +141,49 @@ with open('C:\\Users\\gx7594\\OneDrive - Wayne State University\\PhD\\AR-proj Cl
   elif(volume[i] > 0.00779 and tris[i] <= 35000)  :    
         lowtris_highvol.append(name[i]) 
   '''
+  if (name[i]=='andy' or name[i] == 'CocacolaFinal' or name[i]== 'ATV' or name[i]== 'bike'):
+   if(name[i] == 'CocacolaFinal'):
+       plt.annotate('Coca', (area[i], tris[i]))
+   else:
+      plt.annotate(name[i], (area[i], tris[i]))
  
-  if (area[i] <= 0.6 and tris[i] <= 35000):
+  if (area[i] <= 0.6 and tris[i] <= mean_tris):
        lowtris_lowvol.append(name[i])
        plt.scatter(area[i], tris[i],marker='o', color='r') 
        
-  elif(area[i] <= 0.6 and tris[i] > 35000)  :    
+  elif(area[i] <= 0.6 and tris[i] > mean_tris)  :    
        hightris_lowvol.append(name[i])
+       
        plt.scatter(area[i], tris[i],marker='X', color='b') 
  
-  elif(area[i] > 0.6 and tris[i] > 35000)  :    
+  elif(area[i] > 0.6 and tris[i] > mean_tris)  :    
        hightris_highvol.append(name[i])
        plt.scatter(area[i], tris[i],marker='h', color='orange') 
  
-  elif(area[i] > 0.6 and tris[i] <= 35000)  :    
+  elif(area[i] > 0.6 and tris[i] <= mean_tris)  :    
         lowtris_highvol.append(name[i])
         plt.scatter(area[i], tris[i],marker='v', color='m') 
         
         
- plt.legend([ "HTris_LArea", "HTris_HArea","LTris_HArea", "LowTris_LowArea"  ],
-           loc="upper center", bbox_to_anchor=(1,1 ), fontsize=11)
-            #loc="upper center", bbox_to_anchor=(0.8,-0.2 ), fontsize=11)
- #plt.legend(loc=[1.1, 0.5])  
+ #plt.legend([ "HTris_LArea", "HTris_HArea","LTris_HArea", "LTris_LArea"  ],
+      #     loc="upper right", bbox_to_anchor=(1.1,1 ),  fontsize=7, ncol=1)
+              
 
- #axx = plt.subplot(111)
- #box = axx.get_position()
- #axx.set_position([box.x0, box.y0 + box.height * 0.1,box.width, box.height * 0.9])       
- #axx.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05),   fancybox=True, shadow=True, ncol=5)  
-         
- 
- # 35000 is max tris that doesn't affect gpu, so objects with min tris could be in this area
- # 0.00779 is average of object's volume fittable on a table
 
- plt.axhline(y=35000,linestyle='--',color='red', xmin=0.005)
+
+ plt.axhline(y=mean_tris,linestyle='--',color='red', xmin=0.005)
  #plt.axhline(y=100,linestyle='--',color='red', xmin=0.5)
  plt.axvline(x=0.62, ymax=log_tris,linestyle='--', color='red')
 
  #plt.title('Data Base Information', fontsize=11)
- plt.xlabel('Area')
- plt.ylabel('Tris')
+ plt.xlabel('Area',fontsize=8,labelpad=-1)
+ plt.ylabel('Triangle Count',fontsize=8,labelpad=-1)
  ax = plt.gca()
  ax.set_yscale('log')
  ax.set_xscale('log')
   
  plt.tight_layout()
- plt.savefig("database.pdf", dpi=500)
+ plt.savefig("database.pdf", dpi=500, bbox_inches='tight')
  plt.show()
  
   
