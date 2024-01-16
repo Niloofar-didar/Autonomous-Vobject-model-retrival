@@ -10,3 +10,7 @@ We found through our experiemnts that each object has its own chrarctristic in t
 WE model each object perceived quality through this offline tool. We put two objects of the same type, one as a reference with maximum quality and the other one with lower triangle count automatically at various distance from a virtual camera and then apply IQA to measure the second object quality relative to the first one and then use the collectd data to generate its modeling parameters.
 
 ![image](https://github.com/Niloofar-didar/Autonomous-Vobject-model-retrival/assets/27611369/5781e0de-a6c9-491b-8072-519562fbee19)
+
+Please check the pffline profiling of virtual objects steps with a sample of Andy pobject at two different distances through three decimation ratios below:
+
+![image](https://github.com/Niloofar-didar/Autonomous-Vobject-model-retrival/assets/27611369/a1f9a1ec-4a67-4b8b-9e69-c665cfe18be6)
