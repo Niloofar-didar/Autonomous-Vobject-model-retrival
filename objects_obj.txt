@@ -1,0 +1,4 @@
+Objects/obj/andy.obj 0.1
+Objects/obj/andy.obj 0.2
+Objects/obj/andy.obj 0.3
+Objects/obj/andy.obj 0.4
