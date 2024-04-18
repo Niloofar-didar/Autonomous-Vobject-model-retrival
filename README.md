@@ -1,8 +1,15 @@
-To generate decimated objects please open file and run in CMD the command below:
+To generate decimated objects, please consider below guidline:
+
+Put blenderSimplifyConvertObj.py and objects_obj.txt in a same directory, Assume that these files are in a /home/ directory, you need to make sure you have already blender-2.80rc2-linux-glibc217-x86_64 decompressed in the same directory as well as objects_obj.txt which shows the address of each object. You can find that specific version of Blender in https://download.blender.org/release/Blender2.80/
+
+Please make sure you have all the object files (virtual objects OBJ file and the texture/image files ) stored in this directory: home/Objects/obj/object_name, as an example: home/Objects/obj/andy.obj where andy.obj is for andy object.
+Then open CMD and run the command below: the bellow command, 
 blender-2.80rc2-linux-glibc217-x86_64/blender -b -P blenderSimplifyConvertObj.py --  --inm objects_obj.txt
-Assume that these files (blenderSimplifyConvertObj.py and objects_obj.txt) are in a /home/ directory, you need to make sure you have already blender-2.80rc2-linux-glibc217-x86_64 dexompressed in the same directory as well as objects_obj.txt which shows the address of each object.
-Please make sure you have all the object files stored in this directory: home/Objects/obj/object_name, as an example: home/Objects/obj/andy.obj
-After running the above command, all decimated objects with the format of SFB will be generated to sfb_object folder. please make sure to create an empty folder under this name in the /home/ directory
+
+you will see all decimated objects with the format of SFB will be generated to home/sfb_objects/sfb_decimated folder. please make sure to create a folder under these names in the /home/ directory.
+
+
+
 
 
 
