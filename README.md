@@ -1,3 +1,11 @@
+To generate decimated objects please open file and run in CMD the command below:
+blender-2.80rc2-linux-glibc217-x86_64/blender -b -P blenderSimplifyConvertObj.py --  --inm objects_obj.txt
+Assume that these files (blenderSimplifyConvertObj.py and objects_obj.txt) are in a /home/ directory, you need to make sure you have already blender-2.80rc2-linux-glibc217-x86_64 dexompressed in the same directory as well as objects_obj.txt which shows the address of each object.
+Please make sure you have all the object files stored in this directory: home/Objects/obj/object_name, as an example: home/Objects/obj/andy.obj
+After running the above command, all decimated objects with the format of SFB will be generated to sfb_object folder. please make sure to create an empty folder under this name in the /home/ directory
+
+
+
 In this project, we create a model for assessing the user perceived quality for virtual objects based on the fact that user's ability to perceive high detail of virtual objects
 degrades as user-object distance increases. Moreover, high triangle count of virtual mesh can help to improve the perceived quality of virtual object.
 you can observe a sample of bunnies in below that shows both facts:
