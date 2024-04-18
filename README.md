@@ -1,5 +1,7 @@
 *** To run the virtuall object parameter modeling tool, you need to first download all the files from this repository into your PC. Then run Model.py through below commands in you Linux CMD:
+
 blender -b -P Model.py -- --infile Objects/CriticInp.txt
+
 this code finds first critical angle of the object and then you run test.py that based on found angel, puts objects at various distance and decimation ratio:
 
 blender-2.79-linux-glibc219-x86_64/blender -b -P test.py
@@ -12,7 +14,8 @@ make sure to have the required files such as blender-2.79-linux-glibc219-x86_64 
 Put blenderSimplifyConvertObj.py and objects_obj.txt in a same directory, Assume that these files are in a /home/ directory, you need to make sure you have already blender-2.80rc2-linux-glibc217-x86_64 decompressed in the same directory as well as objects_obj.txt which shows the address of each object. You can find that specific version of Blender in https://download.blender.org/release/Blender2.80/
 
 Please make sure you have all the object files (virtual objects OBJ file and the texture/image files ) stored in this directory: home/Objects/obj/object_name, as an example: home/Objects/obj/andy.obj where andy.obj is for andy object.
-Then open CMD and run the command below: the bellow command, 
+Then open CMD and run the command below: the bellow command:
+
 blender-2.80rc2-linux-glibc217-x86_64/blender -b -P blenderSimplifyConvertObj.py --  --inm objects_obj.txt
 
 you will see all decimated objects with the format of SFB will be generated to home/sfb_objects/sfb_decimated folder. please make sure to create a folder under these names in the /home/ directory.
