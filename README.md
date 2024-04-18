@@ -1,4 +1,13 @@
-To generate decimated objects, please consider below guidline:
+*** To run the virtuall object parameter modeling tool, you need to first download all the files from this repository into your PC. Then run Model.py through below commands in you Linux CMD:
+blender -b -P Model.py -- --infile Objects/CriticInp.txt
+this code finds first critical angle of the object and then you run test.py that based on found angel, puts objects at various distance and decimation ratio:
+
+blender-2.79-linux-glibc219-x86_64/blender -b -P test.py
+
+make sure to have the required files such as blender-2.79-linux-glibc219-x86_64 (google and download this verison online), object files in Object/obj, and CriticInp.txt and test.py. 
+
+
+*** To generate decimated objects, please consider below guidline:
 
 Put blenderSimplifyConvertObj.py and objects_obj.txt in a same directory, Assume that these files are in a /home/ directory, you need to make sure you have already blender-2.80rc2-linux-glibc217-x86_64 decompressed in the same directory as well as objects_obj.txt which shows the address of each object. You can find that specific version of Blender in https://download.blender.org/release/Blender2.80/
 
